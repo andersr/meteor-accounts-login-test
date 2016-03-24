@@ -7,7 +7,7 @@ export const MainLayout = ({content}) =>
 		  	  <li><a href="/login">Login</a></li>
 		  <li><a href="/signup">Logout</a></li>
 		  <li><a href="/about">About</a></li>
-		  <li><a href="/about">Home</a></li>
+		  <li><a href="/">Home</a></li>
 	  </ul>
 	 {content()}
 	</div>
