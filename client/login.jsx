@@ -12,9 +12,10 @@ const loginWithPassword = (e) => {
     Meteor.loginWithPassword(email, password, (error) => {
       if (error) {
         console.log("login error: " + error.reason)
-      } else {
-        FlowRouter.go('homepage')
-      }
+      } 
+      // else {
+      //   FlowRouter.go('homepage')
+      // }
     })
   }
 

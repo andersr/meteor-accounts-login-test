@@ -24,7 +24,7 @@ function redirectIfAnonymous(context, redirect) {
 FlowRouter.route('/restricted', {
   name: 'restricted',
   triggersEnter: [redirectIfAnonymous],
-  action(params, queryParams) {
+  action() {
     mount(MainLayout, {
       content: () => <Restricted />
     })
