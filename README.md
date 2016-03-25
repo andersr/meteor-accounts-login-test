@@ -1,15 +1,24 @@
-# Testing Accounts.login
+# Redirect anonymous users to the originally requested page after login
 
-- trying to understand if/why [Accounts.onLogin](http://docs.meteor.com/#/full/accounts_onlogin) gets called on every page request if a user is signed in.
-- if a user is anonymous, this does not happen.
-- this becomes a problem if I want to do something only when a user signs in, such as redirect them back to the originally requested page. 
-- I am using FlowRouter, React, and Meteor 1.3
+- I want to implement the ability to redirect to a originally requested page after successful login.
+- My stack: Meteor 1.3, FlowRouter, and React
 
-To recreate the issue:
+## Issues
+- How can I best pass the params needed to achieve this back to FlowRouter after a user signs in. Currently I am using a global variable, which feels like a hack.
+- Also, even after passing the values back to FlowRouter, FlowRouter ignores this and just redirects the user to the homepage.
+- Als, Accounts.onLogin appears to have a bug - according to the [docs](http://docs.meteor.com/#/full/accounts_onlogin) it is supposed to only be called on successful login, but in fact gets called on every page request until logout, which further complicates this effort.
+
+
+
+##To recreate the issue:
 
 1. clone this repo and cd into the repo
 2. npm install
 3. run meteor
 4. in your browser, open the console
-5. look for if Accounts.onLogin gets called depending on if you are signed in or anonymous
+5. click on "Restricted page"
+6. If you are not signed in, you should be redirected to a login page. 
+7. If you don't have an account, click on"Sign up"
+8. Enter an email and password.
+9. You should now be redirected back to the originally requested page. However, you are instead redirected to the homepage :-/ 
 

@@ -20,6 +20,7 @@ export const MainLayout = ({content}) => {
 		  {acctLinks}
 		  <li><a href="/about">About</a></li>
 		  <li><a href="/">Home</a></li>
+		  <li><a href="/restricted">Restricted (requires login)</a></li>
 	  </ul>
 	 {content()}
 	</div>

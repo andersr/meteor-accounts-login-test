@@ -18,6 +18,8 @@ const loginWithPassword = (e) => {
     })
   }
 
+  const signupMsg = "Don't have an account?"
+
   return  (
     <form onSubmit={loginWithPassword} id="login-form">
       <div className="form-group">
@@ -31,8 +33,9 @@ const loginWithPassword = (e) => {
      <div className="form-group">
        <button type="submit" className="btn btn-primary">Sign In</button>
      </div>
+     <hr />
       <div className="form-group">
-        <a href="/signup" className="signup-link">Sign Up</a>
+        {signupMsg} <a href="/signup" className="signup-link">Sign Up</a>
       </div>
     </form>
   )

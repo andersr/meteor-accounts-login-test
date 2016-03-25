@@ -6,7 +6,32 @@ import {About} from './about'
 import {NotFound} from './not_found'
 import {Signup} from './signup'
 import {Login} from './login'
- 
+import {Restricted} from './restricted'
+
+function redirectIfAnonymous(context, redirect) {
+
+  const notSignedIn = Meteor.userId() === null
+
+	 if (notSignedIn) {
+    Session.set("loginRedirect", true)
+    Session.set("requestedPage", context.path)
+
+	 	 alert("Please sign in to continue.")
+     redirect('login')
+	 }
+}
+
+FlowRouter.route('/restricted', {
+  name: 'restricted',
+  triggersEnter: [redirectIfAnonymous],
+  action(params, queryParams) {
+    mount(MainLayout, {
+      content: () => <Restricted />
+    })
+  }
+})
+
+
 FlowRouter.route('/', {
   name: 'homepage',
   action() {
@@ -34,10 +59,9 @@ FlowRouter.route('/signup', {
   }
 })
 
-
 FlowRouter.route('/login', {
   name: 'login',
-  action() {
+  action(params, queryParams) {
     mount(MainLayout, {
       content: () => <Login />
     })
@@ -53,7 +77,6 @@ FlowRouter.route('/logout', {
     })
   }
 })
-
 
 FlowRouter.notFound = {
   action() {
