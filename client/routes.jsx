@@ -14,7 +14,9 @@ function redirectIfAnonymous(context, redirect) {
 
 	 if (notSignedIn) {
     Session.set("loginRedirect", true)
+    console.log("redirectIfAnonymous: loginRedirect ", Session.get("loginRedirect"))
     Session.set("requestedPage", context.path)
+    console.log("redirectIfAnonymous: requestedPage ", Session.get("requestedPage"))
 
 	 	 alert("Please sign in to continue.")
      redirect('login')
