@@ -1,15 +1,14 @@
-# Accounts.onLogin Example
-
-- This is an example showing Accounts.onLogin getting called every time after a user signs in. According to the [docs](http://docs.meteor.com/#/full/accounts_onlogin) it is supposed to only be called on successful login.
-- Stack: Meteor 1.3, FlowRouter, React
+# Redirect to originally requested page
+- This is an example showing how to redirect an anonymous user back to the originally requested page after login.
 
 ##To recreate the issue:
 
 1. clone this repo and cd into the repo
 2. npm install
 3. run meteor
-4. In your browser, open the console
-5. You should not see any references to Accounts.onLogin being called.
-5. Click on Sign up and register with a dummy email and password.
-6. You should now see Accounts.onLogin being called every time you navigate to a new page, until you sign out.
+4. Click on the restricted page link.
+5. You will be redirected to the login page.
+6. CLick on sign up.
+7. Sign up with a dummy email and password.
+8. You should now be redirected back to the originally requested restricted page.
 
